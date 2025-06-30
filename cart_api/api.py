@@ -10,7 +10,7 @@ from cart_api.routes.products import Product, Products
 api = falcon.App(cors_enable=True)
 api.req_options.strip_url_path_trailing_slash = True
 hb = Heartbeat()
-product = Product()
+product = Product() #these resources are treated like classes & associated w/ a route
 products = Products()
 
 # Define our API's routes
