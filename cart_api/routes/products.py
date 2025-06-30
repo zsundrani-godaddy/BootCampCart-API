@@ -34,9 +34,12 @@ class Products:
         resp.media = res
 
     def on_post(self, req, resp):
-        passobj = req.get_media(req)
-        created_record = DatabaseProducts.create(name = passobj["name"], description = ["description"], 
-                                    image_url = passobj["image_url"], price = ["price"], 
-                                    is_on_sale = passobj["is_on_sale"], sale_price = passobj["sale_price"])
+        passobj = req.get_media()
+        created_record = DatabaseProducts.create(name = passobj["name"], 
+                                                 description = passobj["description"], 
+                                                 image_url = passobj["image_url"], 
+                                                 price = passobj["price"], 
+                                                 is_on_sale = passobj["is_on_sale"], 
+                                                 sale_price = passobj["sale_price"])
         resp.status = falcon.HTTP_201
         resp.media = model_to_dict(created_record)
